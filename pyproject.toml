@@ -1,0 +1,25 @@
+[project]
+name = "jarvis-backend"
+version = "1.0.0"
+description = "Local FastAPI service for the JARVIS Windows desktop app"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["app", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+# FastAPI relies on function-call defaults for dependency injection.
+ignore = ["B008"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+  "error::DeprecationWarning:app.*",
+]
